@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 알림 바 타이머를 위한 변수
     let notificationTimer; 
 
     // 1. 필요한 DOM 요소 선택
@@ -9,10 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.getElementById('close-modal-btn');
     const modalContents = document.querySelectorAll('.modal-content');
     const logoLink = document.getElementById('logo-link');
-
-    // ✅ NEW: 알림 바 및 카트 버튼 선택
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
     const notificationBar = document.getElementById('cart-notification-bar');
+
+    // ✅ NEW: Lightbox elements
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('image-lightbox-img');
+    const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+    const staffThumbnails = document.querySelectorAll('.staff-image-thumb'); 
 
     // 2. 모든 네비게이션 버튼에 클릭 이벤트 추가
     navButtons.forEach(button => {
@@ -31,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetContent = document.getElementById(targetId);
             if (targetContent) {
                 targetContent.classList.add('active');
-                // 콘텐츠가 바뀔 때마다 스크롤을 맨 위로
                 targetContent.parentElement.scrollTop = 0; 
             }
 
@@ -60,23 +62,50 @@ document.addEventListener('DOMContentLoaded', () => {
         navButtons.forEach(btn => btn.classList.remove('active'));
     });
 
-    // 5. ✅ NEW: 카트 담기 버튼 이벤트
+    // 5. 카트 담기 버튼 이벤트
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
             
-            // 만약 이미 타이머가 실행 중이라면, 초기화
             if (notificationTimer) {
                 clearTimeout(notificationTimer);
             }
 
-            // 알림 바를 즉시 표시
             notificationBar.classList.add('show');
 
-            // 3초 후에 알림 바를 다시 숨기는 타이머 설정
             notificationTimer = setTimeout(() => {
                 notificationBar.classList.remove('show');
-            }, 3000); // 3000ms = 3 seconds
+            }, 3000); // 3초
         });
+    });
+
+    // 6. ✅ NEW: Image Lightbox Logic
+    staffThumbnails.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            // 클릭된 썸네일의 이미지 경로(src)를 가져옴
+            const imgSrc = thumb.getAttribute('src');
+            // 라이트박스 <img>의 src로 설정
+            lightboxImg.setAttribute('src', imgSrc);
+            // 라이트박스 보이기
+            lightbox.classList.add('show');
+        });
+    });
+
+    // 라이트박스 닫기 함수
+    const closeLightbox = () => {
+        lightbox.classList.remove('show');
+        // 닫을 때 이미지를 비워두면 다음 로딩 시 깔끔함
+        lightboxImg.setAttribute('src', ""); 
+    };
+
+    // 'X' 버튼 클릭 시 닫기
+    lightboxCloseBtn.addEventListener('click', closeLightbox);
+
+    // 어두운 배경 클릭 시 닫기
+    lightbox.addEventListener('click', (e) => {
+        // 클릭된 대상이 정확히 어두운 배경(#image-lightbox)일 때만
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
     });
 
 });
