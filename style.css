@@ -277,18 +277,37 @@ button {
     flex-direction: column;
 }
 
-.product-image {
+/* ✅ NEW: 1:1 비율을 강제하는 래퍼 스타일 */
+.product-image-container {
+    position: relative;
     width: 100%;
-    height: auto; /* Maintains aspect ratio */
-    aspect-ratio: 1 / 1; /* Forces a square ratio */
-    object-fit: contain; /* Ensures the whole image is visible within the square */
+    height: 0;
+    padding-top: 100%; /* 너비의 100%를 높이로 사용 (1:1 비율) */
+    
+    /* 기존 .product-image에 있던 스타일을 여기로 이동 */
     margin-bottom: 0.5rem;
-    border: 1px solid #eee; /* 가벼운 테두리 */
+    border: 1px solid #eee;
     box-sizing: border-box;
-    background-color: #fff; /* 이미지 배경이 투명할 경우를 대비해 흰색 배경 추가 */
+    background-color: #fff;
+    overflow: hidden; /* 이미지가 밖으로 나가지 않도록 */
 }
-/* ... (이하 생략) ... */
 
+/* ✅ UPDATED: .product-image 스타일 수정 */
+.product-image {
+    /* 래퍼 내부에 절대 위치로 꽉 채움 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* 래퍼의 100% 높이(즉, 1:1)를 채움 */
+    
+    object-fit: contain; /* 이미지가 찌그러지지 않고 1:1 영역 안에 맞춤 */
+    
+    /* 래퍼로 이동된 스타일 제거 */
+    /* aspect-ratio, margin-bottom, border, background-color, box-sizing 제거됨 */
+}
+
+/* ... (이하 .product-name 스타일부터는 기존과 동일) ... */
 
 .product-name {
     font-size: 0.9rem;
