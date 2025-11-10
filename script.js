@@ -11,11 +11,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
     const notificationBar = document.getElementById('cart-notification-bar');
 
-    // ✅ NEW: Lightbox elements
+    // Lightbox elements
     const lightbox = document.getElementById('image-lightbox');
     const lightboxImg = document.getElementById('image-lightbox-img');
     const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
     const staffThumbnails = document.querySelectorAll('.staff-image-thumb'); 
+
+    // ✅ NEW: Main Page Image elements
+    const mainPageImage = document.getElementById('main-page-image');
+    // ✅ NEW: 메인 페이지에 보여줄 이미지 목록 (images 폴더 내에 있어야 함)
+    const mainPageImages = [
+        'images/main-product-overview.jpg', // Image 1
+        'images/main-maesil-bottles.jpg',   // Image 2
+        'images/main-kkachi-box.jpg'       // Image 3
+    ];
+
+    // ✅ NEW: 메인 페이지 이미지 랜덤으로 설정 및 라이트박스 연결
+    const setRandomMainImage = () => {
+        const randomIndex = Math.floor(Math.random() * mainPageImages.length);
+        const selectedImage = mainPageImages[randomIndex];
+        mainPageImage.src = selectedImage;
+        mainPageImage.alt = "KKACHI PHARMACY Main Image"; // 대체 텍스트 업데이트
+    };
+
+    // 페이지 로드 시 랜덤 이미지 설정
+    setRandomMainImage();
+
+    // 메인 페이지 이미지 클릭 시 라이트박스 열기
+    mainPageImage.addEventListener('click', () => {
+        lightboxImg.src = mainPageImage.src; // 현재 메인 이미지로 라이트박스 이미지 설정
+        lightbox.classList.add('show');
+    });
 
     // 2. 모든 네비게이션 버튼에 클릭 이벤트 추가
     navButtons.forEach(button => {
@@ -60,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // B. 모든 네비게이션 버튼의 'active' 클래스 제거
         navButtons.forEach(btn => btn.classList.remove('active'));
+
+        // ✅ NEW: 로고 클릭 시 메인 페이지 이미지도 새로고침
+        setRandomMainImage(); 
     });
 
     // 5. 카트 담기 버튼 이벤트
@@ -78,14 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. ✅ NEW: Image Lightbox Logic
+    // 6. Image Lightbox Logic (Staff Thumbnail & Main Image)
     staffThumbnails.forEach(thumb => {
         thumb.addEventListener('click', () => {
-            // 클릭된 썸네일의 이미지 경로(src)를 가져옴
             const imgSrc = thumb.getAttribute('src');
-            // 라이트박스 <img>의 src로 설정
             lightboxImg.setAttribute('src', imgSrc);
-            // 라이트박스 보이기
             lightbox.classList.add('show');
         });
     });
@@ -93,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 라이트박스 닫기 함수
     const closeLightbox = () => {
         lightbox.classList.remove('show');
-        // 닫을 때 이미지를 비워두면 다음 로딩 시 깔끔함
         lightboxImg.setAttribute('src', ""); 
     };
 
@@ -102,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 어두운 배경 클릭 시 닫기
     lightbox.addEventListener('click', (e) => {
-        // 클릭된 대상이 정확히 어두운 배경(#image-lightbox)일 때만
         if (e.target === lightbox) {
             closeLightbox();
         }
