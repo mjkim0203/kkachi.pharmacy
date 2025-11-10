@@ -340,3 +340,81 @@ button {
 #cart-notification-bar.show {
     transform: translateY(0);
 }
+
+/* ==================================================
+✅ NEW: Staff Page Content
+================================================== */
+.staff-list {
+    margin-bottom: 2rem;
+}
+
+.staff-list p {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.5rem !important; /* modal-body p 스타일 덮어쓰기 */
+}
+
+.staff-image-gallery {
+    display: flex;
+    flex-direction: column; /* 세로로 나열 */
+    gap: 1rem; /* 이미지 사이 간격 */
+}
+
+.staff-image-thumb {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    transition: opacity 0.2s ease;
+}
+
+.staff-image-thumb:hover {
+    opacity: 0.8;
+}
+
+/* ==================================================
+✅ NEW: Image Lightbox Modal
+================================================== */
+#image-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 어두운 배경 */
+    z-index: 300; /* 카트 알림(200)보다 위에 표시 */
+    
+    /* 기본 숨김 */
+    display: none; 
+    
+    /* 이미지 중앙 정렬 */
+    justify-content: center;
+    align-items: center;
+    
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+
+#image-lightbox.show {
+    display: flex; /* 클릭 시 보이도록 */
+}
+
+#image-lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain; /* 이미지가 찌그러지지 않게 */
+}
+
+.lightbox-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+}
