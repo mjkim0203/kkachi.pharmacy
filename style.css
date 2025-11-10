@@ -104,12 +104,23 @@ button {
 }
 
 /* --- 메인 콘텐츠 --- */
+/* ✅ OLD: 기존 main-content p 스타일은 이제 필요 없습니다.
 .main-content p {
     font-size: 1rem;
     line-height: 1.6;
     max-width: 600px;
 }
+*/
 
+/* ✅ NEW: 메인 페이지 이미지 스타일 */
+.main-page-image {
+    width: 100%; /* 부모 컨테이너에 맞춤 */
+    height: auto; /* 비율 유지 */
+    display: block; /* 하단 여백 제거 */
+    cursor: pointer; /* 클릭 가능한 표시 */
+    border: 1px solid #eee; /* 가벼운 테두리 */
+    box-sizing: border-box;
+}
 
 /* --- 모달 (사이드바) --- */
 #modal-sidebar {
@@ -233,9 +244,9 @@ button {
         padding-right: 1.5rem;
     }
 
-    .main-content p {
+    /* .main-content p {
         font-size: 0.9rem;
-    }
+    } */
 
     /* 모바일에서는 모달이 화면 전체를 덮도록 */
     #modal-sidebar {
@@ -266,27 +277,15 @@ button {
     flex-direction: column;
 }
 
-/* 기존 product-image-placeholder 스타일은 제거하거나, 
-   향후 이미지가 없을 경우를 대비하여 백업으로 남겨둘 수 있습니다. */
-/* .product-image-placeholder {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #ddd;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-} */
-
-/* ✅ NEW: Styling for actual product images */
 .product-image {
     width: 100%;
-    height: auto; /* Maintains aspect ratio */
-    aspect-ratio: 1 / 1; /* Forces a square ratio */
-    object-fit: contain; /* Ensures the whole image is visible within the square */
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
     margin-bottom: 0.5rem;
-    border: 1px solid #eee; /* 가벼운 테두리 */
+    border: 1px solid #eee;
     box-sizing: border-box;
-    background-color: #fff; /* 이미지 배경이 투명할 경우를 대비해 흰색 배경 추가 */
+    background-color: #fff;
 }
 
 
@@ -341,9 +340,7 @@ button {
     transform: translateY(0);
 }
 
-/* ==================================================
-✅ NEW: Staff Page Content
-================================================== */
+/* --- Staff Page Content --- */
 .staff-list {
     margin-bottom: 2rem;
 }
@@ -352,13 +349,13 @@ button {
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 0.5rem !important; /* modal-body p 스타일 덮어쓰기 */
+    margin-bottom: 0.5rem !important;
 }
 
 .staff-image-gallery {
     display: flex;
-    flex-direction: column; /* 세로로 나열 */
-    gap: 1rem; /* 이미지 사이 간격 */
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .staff-image-thumb {
@@ -374,22 +371,18 @@ button {
     opacity: 0.8;
 }
 
-/* ==================================================
-✅ NEW: Image Lightbox Modal
-================================================== */
+/* --- Image Lightbox Modal --- */
 #image-lightbox {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* 어두운 배경 */
-    z-index: 300; /* 카트 알림(200)보다 위에 표시 */
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 300;
     
-    /* 기본 숨김 */
     display: none; 
     
-    /* 이미지 중앙 정렬 */
     justify-content: center;
     align-items: center;
     
@@ -397,15 +390,14 @@ button {
     box-sizing: border-box;
 }
 
-
 #image-lightbox.show {
-    display: flex; /* 클릭 시 보이도록 */
+    display: flex;
 }
 
 #image-lightbox-img {
     max-width: 90%;
     max-height: 90%;
-    object-fit: contain; /* 이미지가 찌그러지지 않게 */
+    object-fit: contain;
 }
 
 .lightbox-close-btn {
