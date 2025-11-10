@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainPageImage = document.getElementById('main-page-image');
     // ✅ NEW: 메인 페이지에 보여줄 이미지 목록 (images 폴더 내에 있어야 함)
     const mainPageImages = [
-        'images/main-product-overview.jpg', // Image 1
-        'images/main-maesil-bottles.jpg',   // Image 2
-        'images/main-kkachi-box.jpg'       // Image 3
+        'images/image01.png', // Image 1
+        'images/image02.png',   // Image 2
+        'images/image03.png'       // Image 3
     ];
 
     // ✅ NEW: 메인 페이지 이미지 랜덤으로 설정 및 라이트박스 연결
