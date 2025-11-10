@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKACHI PHARMACY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <aside id="modal-sidebar">
+        <div class="modal-header">
+            <button class="close-btn" id="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            
+            <div id="about-content" class="modal-content">
+                <h3>About Brand</h3>
+                <p>Magpies have long been "吉鳥" in Korea, a bird that gives good news.
+KKACHI PHARMACY captured this positive meaning with the brand's vision of 'Good News for Your Health'.
+Beyond just drugs, we want to deliver positive energy that invigorates tired daily lives and creates healthy habits.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... (더미 텍스트)</p>
+                <p style="height: 800px;"></p>
+                <p>스크롤 하단 콘텐츠</p>
+            </div>
+
+            <div id="product-content" class="modal-content">
+                <h2>Product</h2>
+                
+                <div class="product-grid">
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Maesil Digestive Syrup</p>
+                        <p class="product-price">9000W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Acu Pen</p>
+                        <p class="product-price">9000W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Cooling Balm</p>
+                        <p class="product-price">5900W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Jinju Mints</p>
+                        <p class="product-price">12000W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Acu Patch</p>
+                        <p class="product-price">5900W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Cooling Roll</p>
+                        <p class="product-price">12000W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Hwangto Heat Pack</p>
+                        <p class="product-price">5900W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-image-placeholder"></div>
+                        <p class="product-name">Jinju Mints</p>
+                        <p class="product-price">12000W</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+
+                </div> </div>
+
+            <div id="staff-content" class="modal-content">
+                <h2>Staff</h2>
+                <p>스태프 정보가 여기에 표시됩니다.</p>
+            </div>
+
+        </div>
+        <div class="scroll-indicator">
+            <span>&darr;</span>
+        </div>
+    </aside>
+
+    <header class="site-header">
+        <div class="main-header">
+            <a href="#" id="logo-link">
+                <div class="logo-container">
+                    <div class="logo-kkachi">KKACHI</div>
+                    <div class="logo-pharmacy">
+                        <span>P</span><span>H</span><span>A</span><span>R</span><span>M</span><span>A</span><span>C</span><span>Y</span>
+                    </div>
+                </div>
+            </a>
+            
+            <div class="lang-switcher">
+                KOR / EN
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <button class="nav-btn" data-target="about-content">About Brand</button>
+            <button class="nav-btn" data-target="product-content">Product</button>
+            <button class="nav-btn" data-target="staff-content">Staff</button>
+        </nav>
+    </header>
+
+    <div class="main-page-container">
+        <main class="main-content">
+            <p>
+                Magpies have long been "吉鳥" in Korea, a bird that gives good news.
+                KKACHI PHARMACY captured this positive meaning with the brand's vision
+                of 'Good News for Your Health'. Beyond just drugs, we want to deliver
+                positive energy that invigorates tired daily lives and creates healthy habits.
+            </p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
