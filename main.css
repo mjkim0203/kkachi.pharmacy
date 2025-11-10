@@ -1,0 +1,348 @@
+/* --- 기본 및 폰트 설정 --- */
+body {
+    /* 기본 폰트는 Inter로 설정 */
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+h1, h2, p, div {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* --- 1. 헤더 (고정 아님) --- */
+.site-header {
+    padding: 3rem;
+    box-sizing: border-box; 
+}
+
+/* --- 헤더 내부 (로고 + 언어) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 로고 링크 스타일 */
+#logo-link {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 부모 요소의 색상(검은색) 상속 */
+    cursor: pointer;
+}
+
+
+/* --- 로고 (Roboto Medium) --- */
+.logo-container {
+    font-family: 'Roboto', sans-serif; /* Roboto 폰트 적용 */
+    font-weight: 500; /* Medium 가중치 */
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: #333;
+    display: inline-block;
+}
+
+.logo-kkachi {
+    display: block;
+    white-space: nowrap;
+}
+
+.logo-pharmacy {
+    display: flex;
+    justify-content: space-between; /* (CSS 누락 수정) */
+    font-size: 1.65rem; /* (사용자 코드 기준) */
+}
+
+.lang-switcher {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* --- 네비게이션 버튼 (스타일 변경) --- */
+.main-nav {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-btn {
+    /* 기본 상태 (흰색 배경, 검은 글씨) */
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: #f0f0f0;
+}
+
+/* 활성화 상태 (검은 배경, 흰 글씨) */
+.nav-btn.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* --- 메인 페이지 레이아웃 --- */
+.main-page-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+
+    max-width: 1920px; 
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* --- 메인 콘텐츠 --- */
+.main-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+
+/* --- 모달 (사이드바) --- */
+#modal-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 35%; 
+    max-width: 500px;
+    background-color: #f0f0f0; 
+    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    box-sizing: border-box;
+
+    /* 왼쪽 밖으로 숨기기 */
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    
+    display: flex;
+    flex-direction: column;
+
+    z-index: 100; 
+}
+
+/* 모달이 열렸을 때 */
+#modal-sidebar.open {
+    transform: translateX(0);
+}
+
+.modal-header {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #333;
+    line-height: 1;
+}
+
+/* 모달 스크롤 영역 */
+.modal-body {
+    margin-top: 4rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* 모달 콘텐츠 기본 숨김 */
+.modal-content {
+    display: none;
+}
+/* 활성화된 콘텐츠만 보이기 */
+.modal-content.active {
+    display: block;
+}
+
+.modal-body h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* 스크롤 다운 화살표 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, -10px);
+    }
+    60% {
+        transform: translate(-50%, -5px);
+    }
+}
+
+
+/* --- 반응형 (모바일/태블릿) --- */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 1.5rem;
+    }
+
+    .logo-container {
+        font-size: 2rem;
+    }
+    .logo-pharmacy {
+        font-size: 1.5rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        text-align: left;
+    }
+
+    .main-page-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .main-content p {
+        font-size: 0.9rem;
+    }
+
+    /* 모바일에서는 모달이 화면 전체를 덮도록 */
+    #modal-sidebar {
+        width: 100%;
+        max-width: none;
+        padding: 1.5rem;
+    }
+
+    .modal-header {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .modal-body {
+        margin-top: 3rem;
+    }
+}
+
+/* --- ✅ NEW: Product Grid Styles --- */
+.product-grid {
+    display: grid;
+    /* 2-column grid */
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* This is the gray placeholder div */
+.product-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Makes it a perfect square */
+    background-color: #ddd; /* Gray color */
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* If you use a real <img> tag, you might use this style instead:
+.product-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+*/
+
+.product-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0.25rem !important; /* Override .modal-body p */
+}
+
+.product-price {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.5rem !important; /* Override .modal-body p */
+}
+
+.add-to-cart-btn {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: flex-start; /* Don't stretch the button */
+    transition: all 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* ==================================================
+✅ NEW: Cart Notification Bar
+================================================== */
+#cart-notification-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000; /* 사이트 테마에 맞게 검은색 배경 */
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 200; /* 모달(100)보다 위에 표시 */
+    
+    /* 기본 상태: 화면 밖 하단에 숨김 */
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#cart-notification-bar.show {
+    /* show 클래스가 추가되면 화면 안으로 올리기 */
+    transform: translateY(0);
+}
