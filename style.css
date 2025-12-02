@@ -94,9 +94,7 @@ button {
 
 /* --- 메인 페이지 레이아웃 --- */
 .main-page-container {
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-bottom: 3rem;
+  
 
     max-width: 1920px; 
     margin: 0 auto;
