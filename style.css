@@ -120,6 +120,7 @@ button {
     cursor: pointer; /* 클릭 가능한 표시 */
     border: 1px solid #eee; /* 가벼운 테두리 */
     box-sizing: border-box;
+    pointer-events: none; /* 클릭 불가 */
 }
 
 /* --- 모달 (사이드바) --- */
